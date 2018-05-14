@@ -26,8 +26,8 @@ Gooey.Preloader = function() {};
 Gooey.Preloader.prototype = {
 		preload: function() {			//preload assets
 				console.log('GamePlay: preload');
-				this.load.path = 'assets/audio/';
-				this.load.audio('footsteps', ['footsteps.ogg']);
+				//this.load.path = 'assets/audio/';
+				this.load.audio('footsteps', ['assets/audio/footsteps.ogg']);
 		},
 		create: function() {
 				console.log('Preloader: create');
@@ -50,13 +50,17 @@ Gooey.Start = function() {
 		var forwardArrow;
 		var leftArrow;
 		var rightArrow;
+		var background;
 };
 Gooey.Start.prototype = {
 		preload: function() {
 				console.log('Play: preload');
+				this.load.image('scout', 'assets/img/Scout.png');
 		},
 		create: function() {
 				console.log('Play: create');
+				background = this.add.sprite(0, 0, 'scout');
+				background.scale.setTo(1.3, 1.2);
 
 				// resource box to contain resource meters
 				resources = game.add.graphics(0, 0);
@@ -163,8 +167,8 @@ Gooey.Up = function() {};
 Gooey.Up.prototype = {
 		preload: function() {
 				console.log('Up: preload');
-				var text1 = this.add.text(0,-50, 'You journey forward into the unknown after a long journey you suddenly\nrealized that you have somehow contracted dysentary, this kills you\ninstantly for some reason', {fontsize: '50px', fill: 'white'});
-				var text2 = this.add.text(0,50, 'Press spacebar to not die horribly again', {fontsize: '40px', fill: 'white'});
+				var text1 = this.add.text(0,-50, 'You move forward to investigate the scout, unfortunately\nscouts are good at seeing things so he spots you and shoots you', {fontsize: '50px', fill: 'white'});
+				var text2 = this.add.text(0,50, 'Press spacebar to not get shot horribly again', {fontsize: '40px', fill: 'white'});
 				text1.setTextBounds(0,200,1000,100);
 				text2.setTextBounds(0,250,1000,100);
 		},
@@ -184,7 +188,7 @@ Gooey.Left = function() {};
 Gooey.Left.prototype = {
 		preload: function() {
 				console.log('Left: preload');
-				var text1 = this.add.text(0,0, 'After a gruesome journey encountering many foes you finally made it back\nhome, truly it was because you choose the left path you masterful player!', {fontsize: '50px', fill: 'black'});
+				var text1 = this.add.text(0,-50, 'You avoid the enemy scout and after a gruesome journey encountering many \nfoes you finally made it back home, truly it was because you choose \nthe left path you masterful player!', {fontsize: '50px', fill: 'black'});
 				var text2 = this.add.text(0,50, 'Press spacebar to challenge yourself again', {fontsize: '40px', fill: 'black'});
 				text1.setTextBounds(0,200,1000,100);
 				text2.setTextBounds(0,250,1000,100);
@@ -205,7 +209,7 @@ Gooey.Right = function() {};
 Gooey.Right.prototype = {
 		preload: function() {
 				console.log('Right: preload');
-				var text1 = this.add.text(0,-25, 'You went right and landed right in the middle of an enemy patrol and got shot...\noopsies', {fontsize: '50px', fill: 'white'});
+				var text1 = this.add.text(0,-25, 'You journey in the right direction or so you hope. You have a glorious\nadventure exploring the countryside. You also die horribly of dysentery \nsomehow', {fontsize: '50px', fill: 'white'});
 				var text2 = this.add.text(0,50, 'Press spacebar to hopefully do better', {fontsize: '40px', fill: 'white'});
 				text1.setTextBounds(0,200,1000,100);
 				text2.setTextBounds(0,250,1000,100);
