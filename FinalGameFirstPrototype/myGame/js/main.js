@@ -51,6 +51,7 @@ Gooey.Start = function() {
 		var leftArrow;
 		var rightArrow;
 		var background;
+		var scoutText;
 };
 Gooey.Start.prototype = {
 		preload: function() {
@@ -61,6 +62,9 @@ Gooey.Start.prototype = {
 				console.log('Play: create');
 				background = this.add.sprite(0, 0, 'scout');
 				background.scale.setTo(1.3, 1.2);
+
+				//scoutText = this.add.text(300, 200, 'Enemy Scout spotted', {font: '45px Arial', fill: '#999'});
+				//this.add.text(20, 10, 'scoutText', {fontsize: '12px', fill: 'white'});
 
 				// resource box to contain resource meters
 				resources = game.add.graphics(0, 0);
@@ -98,6 +102,9 @@ Gooey.Start.prototype = {
 				this.add.text(10,80, 'Stamina', {fontsize: '12px', fill: 'white'});
 				this.add.text(10,120, 'Time', {fontsize: '12px', fill: 'white'});
 				this.add.text(10,160, 'Anonymity', {fontsize: '12px', fill: 'white'});
+
+				scoutText = this.add.text(550, 40, 'Enemy Scout', {fontsize: '24px', fill: 'red'});
+				scoutText.anchor.set(0.5, 0.5);
 
 				forwardArrow = game.add.graphics(0, 0);
 				forwardArrow.beginFill(0xdee5df);
