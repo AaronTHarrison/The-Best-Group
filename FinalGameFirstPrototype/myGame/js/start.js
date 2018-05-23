@@ -1,46 +1,4 @@
-//var Gooey = { };
-
-/*Gooey.Boot = function() {};
-Gooey.Boot.prototype = {
-		init: function() {
-				console.log('Boot: init');
-		},
-		preload: function() {
-				console.log('Boot: preload');
-				var text1 = this.add.text(0, 0, 'The Best Game\n', {fontSize: '50px', fill: 'black'});
-				var text2 = this.add.text(0, 0, 'Press Space to Start\n', {fontSize: '50px', fill: 'black'});
-				text1.setTextBounds(0,200,1000,100);
-				text2.setTextBounds(0,250,1000,100);
-		},
-		create: function() {
-				this.stage.backgroundColor = '#859994';
-		},
-		update: function() {
-				if(this.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR)){
-						this.state.start('Preloader');
-				}
-		}
-};
-
-Gooey.Preloader = function() {};
-Gooey.Preloader.prototype = {
-		preload: function() {			//preload assets
-				console.log('GamePlay: preload');
-				//this.load.path = 'assets/audio/';
-				this.load.audio('footsteps', ['assets/audio/footsteps.ogg']);
-		},
-		create: function() {
-				console.log('Preloader: create');
-				this.stage.backgroundColor = '#859994';
-		},
-		update: function() {
-				if(this.cache.isSoundDecoded('footsteps')){
-						this.state.start('Start');		// go to next state
-				}
-		}
-};
-
-Gooey.Start = function() {
+function Start() {
 		var resources;
 		var health;
 		var ammo;
@@ -53,7 +11,7 @@ Gooey.Start = function() {
 		var background;
 		var scoutText;
 };
-Gooey.Start.prototype = {
+Start.prototype = {
 		preload: function() {
 				console.log('Play: preload');
 				this.load.image('scout', 'assets/img/Scout.png');
@@ -147,7 +105,7 @@ Gooey.Start.prototype = {
 		},
 		/*resetFade: function() {
 				game.camera.resetFX();
-		},
+		},*/
 		update: function() {
 				var cursors = this.input.keyboard.createCursorKeys();
 				var feet = this.add.audio('footsteps');
@@ -169,75 +127,3 @@ Gooey.Start.prototype = {
 		}
 		
 };
-
-Gooey.Up = function() {};
-Gooey.Up.prototype = {
-		preload: function() {
-				console.log('Up: preload');
-				var text1 = this.add.text(0,-50, 'You move forward to investigate the scout, unfortunately\nscouts are good at seeing things so he spots you and shoots you', {fontsize: '50px', fill: 'white'});
-				var text2 = this.add.text(0,50, 'Press spacebar to not get shot horribly again', {fontsize: '40px', fill: 'white'});
-				text1.setTextBounds(0,200,1000,100);
-				text2.setTextBounds(0,250,1000,100);
-		},
-		create: function() {
-				console.log('Up: create');
-				this.stage.backgroundColor = '#000000';
-		},
-		update: function() {
-				console.log('Up: update');
-				if(this.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR)){
-						this.state.start('Preloader');
-				}
-		}
-};
-
-Gooey.Left = function() {};
-Gooey.Left.prototype = {
-		preload: function() {
-				console.log('Left: preload');
-				var text1 = this.add.text(0,-50, 'You avoid the enemy scout and after a gruesome journey encountering many \nfoes you finally made it back home, truly it was because you choose \nthe left path you masterful player!', {fontsize: '50px', fill: 'black'});
-				var text2 = this.add.text(0,50, 'Press spacebar to challenge yourself again', {fontsize: '40px', fill: 'black'});
-				text1.setTextBounds(0,200,1000,100);
-				text2.setTextBounds(0,250,1000,100);
-		},
-		create: function() {
-				console.log('Left: create');
-				this.stage.backgroundColor = '#d5e5e4';
-		},
-		update: function() {
-				console.log('Left: update');
-				if(this.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR)){
-						this.state.start('Preloader');
-				}
-		}
-};
-
-Gooey.Right = function() {};
-Gooey.Right.prototype = {
-		preload: function() {
-				console.log('Right: preload');
-				var text1 = this.add.text(0,-25, 'You journey in the right direction or so you hope. You have a glorious\nadventure exploring the countryside. You also die horribly of dysentery \nsomehow', {fontsize: '50px', fill: 'white'});
-				var text2 = this.add.text(0,50, 'Press spacebar to hopefully do better', {fontsize: '40px', fill: 'white'});
-				text1.setTextBounds(0,200,1000,100);
-				text2.setTextBounds(0,250,1000,100);
-		},
-		create: function() {
-				console.log('Right: create');
-				this.stage.backgroundColor = '#000000';
-		},
-		update: function() {
-				console.log('Right: update');
-				if(this.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR)){
-						this.state.start('Preloader');
-				}
-		}
-};*/
-
-var game = new Phaser.Game(1000, 600, Phaser.AUTO);
-game.state.add('Boot', Boot);
-game.state.add('Preloader', Preloader);
-game.state.add('Start', Start);
-game.state.add('Up', Up);
-game.state.add('Left', Left);
-game.state.add('Right', Right);
-game.state.start('Boot');
