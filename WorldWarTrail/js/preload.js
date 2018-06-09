@@ -1,5 +1,5 @@
-Preloader = function() {};
-Preloader.prototype = {
+WWT.Preloader = function() {};
+WWT.Preloader.prototype = {
 		preload: function() {			//preload assets
 				console.log('Preloader: preload');
 				this.load.audio('footsteps', ['assets/audio/footsteps.ogg']);
@@ -9,8 +9,9 @@ Preloader.prototype = {
 				this.load.image('town', 'Town.png');
 				this.load.image('camping', 'Camping.png');
 				this.load.image('campsite', 'Campsite.png');
+				this.load.image('minefield', 'Minefield.png');
 
-				this.load.image('anonymity-1', 'Anonymity-1.png');
+				/*this.load.image('anonymity-1', 'Anonymity-1.png');
 				this.load.image('anonymity-2', 'Anonymity-2.png');
 				this.load.image('anonymity-3', 'Anonymity-3.png');
 				this.load.image('anonymity-4', 'Anonymity-4.png');
@@ -37,6 +38,7 @@ Preloader.prototype = {
 				this.load.image('time-3', 'Time-3.png');
 				this.load.image('time-4', 'Time-4.png');
 				this.load.image('time-5', 'Time-5.png');
+                */
 
 				this.load.image('arrowUp', 'ArrowUp.png');
 				this.load.image('arrowLeft', 'ArrowLeft.png');
@@ -49,7 +51,7 @@ Preloader.prototype = {
 		},
 		update: function() {
 				if(this.cache.isSoundDecoded('footsteps')){
-						this.state.start('Scenarios');		// go to next state
+						this.state.start('Scenario1');		// go to next state
 				}
 		}
 };

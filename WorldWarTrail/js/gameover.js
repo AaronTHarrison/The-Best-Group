@@ -1,5 +1,5 @@
-Gameover = function() {};
-Gameover.prototype = {
+WWT.Gameover = function() {};
+WWT.Gameover.prototype = {
 		preload: function() {
 				console.log('Gameover: preload');
 				var text1 = this.add.text(0,25, 'You failed, soldier.', {fontsize: '50px', fill: 'white'});

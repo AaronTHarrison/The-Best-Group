@@ -1,5 +1,26 @@
-function Boot() {};
-Boot.prototype = {
+var WWT = {};
+		healthText: null
+		healthNum: null
+		foodText: null
+		foodNum: null
+		energyText: null
+		energyNum: null
+		timeText: null
+		timeNum: null
+		anonymityText: null
+		anonymityNum: null
+		arrowUp: null
+		upText: null
+		arrowLeft: null
+		leftText: null
+		arrowRight: null
+		rightText: null
+		background: null
+		Text: null
+		UI: null
+
+WWT.Boot = function() {};
+WWT.Boot.prototype = {
 		init: function() {
 				console.log('Boot: init');
 		},
