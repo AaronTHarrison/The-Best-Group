@@ -1,0 +1,120 @@
+[
+		[
+				{
+						"scenario" : "Town",
+						"narration" : "You stumble across a small German town. Nazi propaganda is plastered around the town. You can see a small gathering around with the nazi national anthem. What do you do?",
+						"choices" : "true"
+				},
+				{
+						"scenario" : "Town",
+						"Tchoose1" : "1: Quietly walk through the town",
+				},
+				{
+						"scenario" : "Town",
+						"Tchoose2" : "2: Start shooting these dirty nazis",
+				}
+		],
+		[
+				{
+						"scenario" : "Scout",
+						"narration" : "You stumble across a small German town. Nazi propaganda is plastered around the town. You can see a small gathering around with the nazi national anthem. What do you do?",
+						"choice" : "true"
+				},
+				{
+						"scenario" : "Scout",
+						"Schoose1" : "1: Sneak past",
+				},
+				{
+						"scenario" : "Scout",
+						"Schoose2" : "2: Take aim and fire",
+				},
+				{
+						"scenario" : "Scout",
+						"Schoose3" : "3: Stand still and wait for him to pass",
+				},
+				{
+						"scenario" : "Scout",
+						"Schoose4" : "4: Stand up and shout slurs at him",
+				}
+		],
+		[
+				{
+						"scenario" : "Deeper",
+						"narration" : "You stumble across a small German town. Nazi propaganda is plastered around the town. You can see a small gathering around with the nazi national anthem. What do you do?",
+						"choice" : "true",
+				},
+				{
+						"scenario" : "Deeper",
+						"Dchoose1" : "Speak with group of men surrounding the radio",
+				},
+				{
+						"scenario" : "Deeper",
+						"Dchoose2" : "Try to buy food from the shops",
+				},
+				{
+						"scenario" : "Deeper",
+						"Dchoose3" : "Steal bread",
+				},
+				{
+						"scenario" : "Deeper",
+						"Dchoose4" : "Get a place to stay for the night",
+				},
+		],
+		[
+				{
+						"scenario" : "River",
+						"narration" : "You stumble across a small German town. Nazi propaganda is plastered around the town. You can see a small gathering around with the nazi national anthem. What do you do?",
+						"choice" : "true",
+				},
+				{
+						"scenario" : "River",
+						"Rchoose1" : "Wade through the river",
+				},
+				{
+						"scenario" : "River",
+						"Rchoose2" : "Find a way around the river",
+				},
+				{
+						"scenario" : "River",
+						"Rchoose3" : "Make a bootleg raft",
+				},
+		],
+		[
+				{
+						"scenario" : "Minefield",
+						"narration" : "You come upon a minefield",
+						"choice" : "true",
+				},
+				{
+						"scenario" : "Minefield",
+						"Mchoose1" : "Blindly cross the minefield",
+				},
+				{
+						"scenario" : "Minefield",
+						"Mchoose2" : "Go around",
+				},
+				{
+						"scenario" : "Minefield",
+						"Mchoose3" : "Take a narrow opening in the sea of mines",
+				},
+		],
+		[
+				{
+						"scenario" : "Camp",
+						"narration" : "You decide to camp out as the sun goes down",
+						"choice" : "true",
+				},
+				{
+						"scenario" : "Camp",
+						"Cchoose1" : "Head into the woods and forage",
+				},
+				{
+						"scenario" : "Camp",
+						"Cchoose2" : "Set up camp and go to sleep",
+				},
+				{
+						"scenario" : "Camp",
+						"Cchoose3" : "Start a fire and eat",
+				},
+		]
+]
