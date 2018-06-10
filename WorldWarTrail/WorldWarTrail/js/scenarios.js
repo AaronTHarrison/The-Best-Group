@@ -309,11 +309,18 @@ WWT.Scenario3.prototype = {
 				if(cursors.up.justDown) {
 						feet.play('', 0, 0.25, false);
 						WWT.Text.destroy();
-						WWT.Text = this.add.text(270, 10, 'You swim through the water and barely make it to the opposite shore, that was exhausitng and took a while!\n-3 to energy, -1 to time', {fontSize: '20px', fill: 'black', wordWrap: true, wordWrapWidth: 700});
-						//this.anonymity.destroy();
-						WWT.energyNum -= 3;
-						WWT.timeNum -= 1;
-						//this.anonymity = this.add.sprite(10, 210, 'anonymity-3');
+						var rand = Math.floor(Math.random() * 2);
+						if(rand == 1){
+							WWT.Text = this.add.text(270, 10, 'You swim through the water and barely make it to the opposite shore, that was exhausitng and took a while!\n-3 to energy, -1 to time', {fontSize: '20px', fill: 'black', wordWrap: true, wordWrapWidth: 700});
+							//this.anonymity.destroy();
+							WWT.energyNum -= 3;
+							WWT.timeNum -= 1;
+							//this.anonymity = this.add.sprite(10, 210, 'anonymity-3');
+						}else{
+							WWT.Text = this.add.text(270, 10, 'Somehow swimming through the river has spontaneously given you dysentery', {fontSize: '20px', fill: 'black', wordWrap: true, wordWrapWidth: 700});
+							WWT.healthNum -= 10;
+							WWT.energyNum -= 10;
+						}
 						if(WWT.healthNum <= 0 || WWT.energyNum <= 0 || WWT.foodNum <= 0 || WWT.timeNum <= 0 || WWT.anonymityNum <= 0){		// gameover conditions
 								game.time.events.add(Phaser.Timer.SECOND * 2, function() { game.camera.fade(0x000000, 1000) });
 								game.time.events.add(Phaser.Timer.SECOND * 5, function() { game.state.start('Gameover')});
@@ -327,9 +334,16 @@ WWT.Scenario3.prototype = {
 				if(cursors.left.justDown) {
 						feet.play('', 0, 0.25, false);
 						WWT.Text.destroy();
-						WWT.Text = this.add.text(270, 10, 'Seriously that river looks dangerous! Of course moving away takes a long time and when you were not looking some ants got into your food!\n-2 to time, -2 to food,', {fontSize: '20px', fill: 'black', wordWrap: true, wordWrapWidth: 700});
-						WWT.timeNum -= 2;
-						WWT.foodNum -= 2;
+						var rand = Math.floor(Math.random() * 2);
+						if(rand == 1){
+							WWT.Text = this.add.text(270, 10, 'Seriously that river looks dangerous! Of course moving away takes a long time and when you were not looking some ants got into your food!\n-2 to time, -2 to food,', {fontSize: '20px', fill: 'black', wordWrap: true, wordWrapWidth: 700});
+							WWT.timeNum -= 2;
+							WWT.foodNum -= 2;
+						}else{
+							WWT.Text = this.add.text(270, 10, 'As you run around the outskirts of the river you find an old bridge crossing safely, you have made good time and made the right choice!\n-1 to energy +1 to time', {fontSize: '20px', fill: 'black', wordWrap: true, wordWrapWidth: 700});
+							WWT.energyNum -= 1;
+							WWT.timeNum += 1;
+						}
 						if(WWT.healthNum <= 0 || WWT.energyNum <= 0 || WWT.foodNum <= 0 || WWT.timeNum <= 0 || WWT.anonymityNum <= 0){		// gameover conditions
 								game.time.events.add(Phaser.Timer.SECOND * 2, function() { game.camera.fade(0x000000, 1000) });
 								game.time.events.add(Phaser.Timer.SECOND * 3, function() { game.state.start('Gameover')});
@@ -341,10 +355,15 @@ WWT.Scenario3.prototype = {
 				if(cursors.right.justDown) {
 						feet.play('', 0, 0.25, false);
 						WWT.Text.destroy();
-						WWT.Text = this.add.text(270, 10, 'You climb into the boat and set off, halfway through the boat breaks forcing you to scamper to the shore! In your rush you left some of your rations in the boat \n-1 to energy, -2 to food', {fontSize: '20px', fill: 'black', wordWrap: true, wordWrapWidth: 700});
-						//this.time.destroy();
-						WWT.energyNum -= 1;
-						WWT.foodNum -= 2;
+						var rand = Math.floor(Math.random() * 2);
+						if(rand == 1){
+							WWT.Text = this.add.text(270, 10, 'You climb into the boat and set off, halfway through the boat breaks forcing you to scamper to the shore! In your rush you left some of your rations in the boat \n-1 to energy, -2 to food', {fontSize: '20px', fill: 'black', wordWrap: true, wordWrapWidth: 700});
+							//this.time.destroy();
+							WWT.energyNum -= 1;
+							WWT.foodNum -= 2;
+						}else{
+							WWT.Text = this.add.text(270, 10, 'You climb into the boat and make it to the opposite shore, well done!', {fontSize: '20px', fill: 'black', wordWrap: true, wordWrapWidth: 700});
+						}
 						//this.anonymity = this.add.sprite(10, 210, 'time-4');
 						if(WWT.healthNum <= 0 || WWT.energyNum <= 0 || WWT.foodNum <= 0 || WWT.timeNum <= 0 || WWT.anonymityNum <= 0){		// gameover conditions
 								game.time.events.add(Phaser.Timer.SECOND * 2, function() { game.camera.fade(0x000000, 1000) });
@@ -408,10 +427,19 @@ WWT.Scenario4.prototype = {
 				if(cursors.up.justDown) {
 						feet.play('', 0, 0.25, false);
 						WWT.Text.destroy();
-						WWT.Text = this.add.text(270, 10, 'Trying to draw as little attention to yourself as possible you travel through town and leave before dark, looks like it is going to be another dark and cold night...\n                  -1 to food, -2 to energy', {fontSize: '20px', fill: 'red', wordWrap: true, wordWrapWidth: 700});
-						//this.anonymity.destroy();
-						WWT.energyNum -= 3;
-						//this.anonymity = this.add.sprite(10, 210, 'anonymity-3');
+						var rand = Math.floor(Math.random() * 2);
+						if(rand == 1){
+							WWT.Text = this.add.text(270, 10, 'Trying to draw as little attention to yourself as possible you travel through town and leave before dark, looks like it is going to be another dark and cold night...\n                  -2 to food, -2 to energy', {fontSize: '20px', fill: 'red', wordWrap: true, wordWrapWidth: 700});
+							//this.anonymity.destroy();
+							WWT.energyNum -= 2;
+							WWT.foodNum -= 2;
+							//this.anonymity = this.add.sprite(10, 210, 'anonymity-3');
+						}else{
+							WWT.Text = this.add.text(270, 10, 'As you pass through town someone spots you and reports you to the police. After a chase scene you manage to escape. \n                            -2 to energy, -1 to health, -1 to food', {fontSize: '20px', fill: 'red', wordWrap: true, wordWrapWidth: 700});
+							WWT.energyNum -= 2;
+							WWT.healthNum -= 1;
+							WWT.foodNum -= 1;
+						}
 						if(WWT.healthNum <= 0 || WWT.energyNum <= 0 || WWT.foodNum <= 0 || WWT.timeNum <= 0 || WWT.anonymityNum <= 0){		// gameover conditions
 								game.time.events.add(Phaser.Timer.SECOND * 2, function() { game.camera.fade(0x000000, 1000) });
 								game.time.events.add(Phaser.Timer.SECOND * 5, function() { game.state.start('Gameover')});
@@ -425,10 +453,18 @@ WWT.Scenario4.prototype = {
 				if(cursors.left.justDown) {
 						feet.play('', 0, 0.25, false);
 						WWT.Text.destroy();
-						WWT.Text = this.add.text(270, 10, 'You spend time exploring some of the local shops and even manage to find a good deal on some bread! Unfortunately your accent and clothes made you stand out and you have undoubtedly been reported\n+1 to food, -1 to anonymity, -1 to time', {fontSize: '20px', fill: 'red', wordWrap: true, wordWrapWidth: 700});
-						WWT.timeNum -= 1;
-						WWT.foodNum += 1;
-						WWT.anonymityNum -= 1;
+						var rand = Math.floor(Math.random() * 2);
+						if(rand == 1){
+							WWT.Text = this.add.text(270, 10, 'You spend time exploring some of the local shops and even manage to find a good deal on some bread! Unfortunately your accent and clothes made you stand out and you have undoubtedly been reported\n+1 to food, -1 to anonymity, -1 to time', {fontSize: '20px', fill: 'red', wordWrap: true, wordWrapWidth: 700});
+							WWT.timeNum -= 1;
+							WWT.foodNum += 1;
+							WWT.anonymityNum -= 1;
+						}else{
+							WWT.Text = this.add.text(270, 10, 'You blend in and procure some resources and get out of town unseen\n                         +1 anonymity, +1 food, -1 time', {fontSize: '20px', fill: 'red', wordWrap: true, wordWrapWidth: 700});
+							WWT.anonymityNum += 1;
+							WWT.foodNum += 1;
+							WWT.timeNum -= 1;
+						}
 						if(WWT.healthNum <= 0 || WWT.energyNum <= 0 || WWT.foodNum <= 0 || WWT.timeNum <= 0 || WWT.anonymityNum <= 0){		// gameover conditions
 								game.time.events.add(Phaser.Timer.SECOND * 2, function() { game.camera.fade(0x000000, 1000) });
 								game.time.events.add(Phaser.Timer.SECOND * 3, function() { game.state.start('Gameover')});
@@ -440,11 +476,17 @@ WWT.Scenario4.prototype = {
 				if(cursors.right.justDown) {
 						feet.play('', 0, 0.25, false);
 						WWT.Text.destroy();
-						WWT.Text = this.add.text(270, 10, 'you eavesdrop and find out about the secret mission that is not in the game yet', {fontSize: '20px', fill: 'red', wordWrap: true, wordWrapWidth: 700});
-						//this.time.destroy();
-						//WWT.energyNum -= 1;
-						//WWT.foodNum -= 2;
-						//this.anonymity = this.add.sprite(10, 210, 'time-4');
+						var rand = Math.floor(Math.random() * 2);
+						if(rand == 1){
+							WWT.Text = this.add.text(270, 10, 'you eavesdrop and find out about the secret mission that is not in the game yet', {fontSize: '20px', fill: 'red', wordWrap: true, wordWrapWidth: 700});
+							//this.time.destroy();
+							//WWT.energyNum -= 1;
+							//WWT.foodNum -= 2;
+							//this.anonymity = this.add.sprite(10, 210, 'time-4');
+						}else{
+							WWT.Text = this.add.text(270, 10, 'As you eavesdrop someone notices and gets the police on you, better run!\n               -2 to energy', {fontSize: '20px', fill: 'red', wordWrap: true, wordWrapWidth: 700});
+							WWT.energyNum -= 2;
+						}
 						if(WWT.healthNum <= 0 || WWT.energyNum <= 0 || WWT.foodNum <= 0 || WWT.timeNum <= 0 || WWT.anonymityNum <= 0){		// gameover conditions
 								game.time.events.add(Phaser.Timer.SECOND * 2, function() { game.camera.fade(0x000000, 1000) });
 								game.time.events.add(Phaser.Timer.SECOND * 3, function() { game.state.start('Gameover')});
@@ -509,11 +551,17 @@ WWT.Scenario5.prototype = {
 				if(cursors.up.justDown) {
 						feet.play('', 0, 0.25, false);
 						WWT.Text.destroy();
-						WWT.Text = this.add.text(270, 10, 'As you franticly run through the minefield, predictably you set off a chain explosion of mines.\n-3 health, -1 to energy', {fontSize: '20px', fill: 'white', wordWrap: true, wordWrapWidth: 700});
-						//this.anonymity.destroy();
-						WWT.healthNum -= 3;
-						WWT.energyNum -= 1;
-						//this.anonymity = this.add.sprite(10, 210, 'anonymity-3');
+						var rand = Math.floor(Math.random() * 2);
+						if(rand = 1){
+							WWT.Text = this.add.text(270, 10, 'As you franticly run through the minefield, predictably you set off a chain explosion of mines.\n-3 health, -1 to energy', {fontSize: '20px', fill: 'white', wordWrap: true, wordWrapWidth: 700});
+							//this.anonymity.destroy();
+							WWT.healthNum -= 3;
+							WWT.energyNum -= 1;
+							//this.anonymity = this.add.sprite(10, 210, 'anonymity-3');
+						}else{
+							WWT.Text = this.add.text(270, 10, 'As you franticly run through the minefield a bomb sets off right in front of you', {fontSize: '20px', fill: 'white', wordWrap: true, wordWrapWidth: 700});
+							WWT.healthNum -= 10;
+						}
 						if(WWT.healthNum <= 0 || WWT.energyNum <= 0 || WWT.foodNum <= 0 || WWT.timeNum <= 0 || WWT.anonymityNum <= 0){		// gameover conditions
 								game.time.events.add(Phaser.Timer.SECOND * 2, function() { game.camera.fade(0x000000, 1000) });
 								game.time.events.add(Phaser.Timer.SECOND * 5, function() { game.state.start('Gameover')});
@@ -527,9 +575,16 @@ WWT.Scenario5.prototype = {
 				if(cursors.left.justDown) {
 						feet.play('', 0, 0.25, false);
 						WWT.Text.destroy();
-						WWT.Text = this.add.text(270, 10, 'You make a choice to walk around the minefield, hopefully you will not run out of time... \n-3 to time -1 to food', {fontSize: '20px', fill: 'white', wordWrap: true, wordWrapWidth: 700});
-						WWT.timeNum -= 3;
-						WWT.foodNum -= 1;
+						var rand = Math.floor(Math.random() * 2);
+						if(rand = 1){
+							WWT.Text = this.add.text(270, 10, 'You make a choice to walk around the minefield, hopefully you will not run out of time... \n-3 to time -1 to food', {fontSize: '20px', fill: 'white', wordWrap: true, wordWrapWidth: 700});
+							WWT.timeNum -= 3;
+							WWT.foodNum -= 1;
+						}else{
+							WWT.Text = this.add.text(270, 10, 'As you walk around the minefield you encounter and enemy patrol who start shooting, luckily you have friends nearby who help you take care of them. \n-2 to health, -2 to energy', {fontSize: '20px', fill: 'white', wordWrap: true, wordWrapWidth: 700});
+							WWT.healthNum -= 2;
+							WWT.energyNum -= 2;
+						}	
 						if(WWT.healthNum <= 0 || WWT.energyNum <= 0 || WWT.foodNum <= 0 || WWT.timeNum <= 0 || WWT.anonymityNum <= 0){		// gameover conditions
 								game.time.events.add(Phaser.Timer.SECOND * 2, function() { game.camera.fade(0x000000, 1000) });
 								game.time.events.add(Phaser.Timer.SECOND * 3, function() { game.state.start('Gameover')});
@@ -541,11 +596,19 @@ WWT.Scenario5.prototype = {
 				if(cursors.right.justDown) {
 						feet.play('', 0, 0.25, false);
 						WWT.Text.destroy();
-						WWT.Text = this.add.text(270, 10, 'You carefully navigate your way through the maze of bombs while gunfire races around you. The mental preasure is intense and a single lapse of judgement will end in certain death...\n-1 to time, -2 to energy', {fontSize: '20px', fill: 'white', wordWrap: true, wordWrapWidth: 700});
-						//this.time.destroy();
-						WWT.timeNum -= 1;
-						WWT.energyNum -= 2;
-						//this.anonymity = this.add.sprite(10, 210, 'time-4');
+						var rand = Math.floor(Math.random() * 2);
+						if(rand = 1){
+							WWT.Text = this.add.text(270, 10, 'You carefully navigate your way through the maze of mines while gunfire races around you. The mental preasure is intense and a single lapse of judgement will end in certain death...\n-1 to time, -2 to energy', {fontSize: '20px', fill: 'white', wordWrap: true, wordWrapWidth: 700});
+							//this.time.destroy();
+							WWT.timeNum -= 1;
+							WWT.energyNum -= 2;
+							//this.anonymity = this.add.sprite(10, 210, 'time-4');
+						}else{
+							WWT.Text = this.add.text(270, 10, 'Either through lapse of judgement or misfortune a mine goes off right next to you \n-2 to health, -1 to time, -1 to energy', {fontSize: '20px', fill: 'black', wordWrap: true, wordWrapWidth: 700});
+							WWT.healthNum -= 2;
+							WWT.timeNum -= 1;
+							WWT.energyNum -= 1;
+						}
 						if(WWT.healthNum <= 0 || WWT.energyNum <= 0 || WWT.foodNum <= 0 || WWT.timeNum <= 0 || WWT.anonymityNum <= 0){		// gameover conditions
 								game.time.events.add(Phaser.Timer.SECOND * 2, function() { game.camera.fade(0x000000, 1000) });
 								game.time.events.add(Phaser.Timer.SECOND * 3, function() { game.state.start('Gameover')});
