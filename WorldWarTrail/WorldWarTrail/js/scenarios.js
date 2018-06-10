@@ -63,7 +63,7 @@ WWT.Scenario1.prototype = {
 						//this.anonymity.destroy();
 						WWT.anonymityNum -= 3;
 						//this.anonymity = this.add.sprite(10, 210, 'anonymity-3');
-						if(WWT.healthNum == 0 || WWT.energyNum == 0 || WWT.foodNum == 0 || WWT.timeNum == 0 || WWT.anonymityNum == 0){		// gameover conditions
+						if(WWT.healthNum <= 0 || WWT.energyNum <= 0 || WWT.foodNum <= 0 || WWT.timeNum <= 0 || WWT.anonymityNum <= 0){		// gameover conditions
 								game.time.events.add(Phaser.Timer.SECOND * 2, function() { game.camera.fade(0x000000, 1000) });
 								game.time.events.add(Phaser.Timer.SECOND * 5, function() { game.state.start('Gameover')});
 
@@ -83,7 +83,7 @@ WWT.Scenario1.prototype = {
 						//this.health.destroy();
 						WWT.healthNum -= 2;
 						//this.health = this.add.sprite(10, 10, 'health-2');
-						if(WWT.healthNum == 0 || WWT.energyNum == 0 || WWT.foodNum == 0 || WWT.timeNum == 0 || WWT.anonymityNum == 0){		// gameover conditions
+						if(WWT.healthNum <= 0 || WWT.energyNum <= 0 || WWT.foodNum <= 0 || WWT.timeNum <= 0 || WWT.anonymityNum <= 0){		// gameover conditions
 								game.time.events.add(Phaser.Timer.SECOND * 2, function() { game.camera.fade(0x000000, 1000) });
 								game.time.events.add(Phaser.Timer.SECOND * 3, function() { game.state.start('Gameover')});
 						}else{
@@ -99,7 +99,7 @@ WWT.Scenario1.prototype = {
 						WWT.timeNum -= 1;
 						WWT.foodNum -= 1;
 						//WWT.anonymity = this.add.sprite(10, 210, 'time-4');
-						if(WWT.healthNum == 0 || WWT.energyNum == 0 || WWT.foodNum == 0 || WWT.timeNum == 0 || WWT.anonymityNum == 0){		// gameover conditions
+						if(WWT.healthNum <= 0 || WWT.energyNum <= 0 || WWT.foodNum <= 0 || WWT.timeNum <= 0 || WWT.anonymityNum <= 0){		// gameover conditions
 								game.time.events.add(Phaser.Timer.SECOND * 2, function() { game.camera.fade(0x000000, 1000) });
 								game.time.events.add(Phaser.Timer.SECOND * 3, function() { game.state.start('Gameover')});
 						}else{
@@ -168,7 +168,7 @@ WWT.Scenario2.prototype = {
 						WWT.foodNum -= 1;
 						WWT.timeNum -= 1;
 						//this.anonymity = this.add.sprite(10, 210, 'anonymity-3');
-						if(WWT.healthNum == 0 || WWT.energyNum == 0 || WWT.foodNum == 0 || WWT.timeNum == 0 || WWT.anonymityNum == 0){		// gameover conditions
+						if(WWT.healthNum <= 0 || WWT.energyNum <= 0 || WWT.foodNum <= 0 || WWT.timeNum <= 0 || WWT.anonymityNum <= 0){		// gameover conditions
 								game.time.events.add(Phaser.Timer.SECOND * 2, function() { game.camera.fade(0x000000, 1000) });
 								game.time.events.add(Phaser.Timer.SECOND * 5, function() { game.state.start('Gameover')});
 
@@ -184,7 +184,7 @@ WWT.Scenario2.prototype = {
 						WWT.Text = this.add.text(270, 10, 'You light a fire and get some comfort, the smoke will draw people closer. \n-2 to anonymity', {fontSize: '20px', fill: 'white', wordWrap: true, wordWrapWidth: 700});
 						WWT.anonymityNum -= 2;
 						//WWT.foodNum -= 1;
-						if(WWT.healthNum == 0 || WWT.energyNum == 0 || WWT.foodNum == 0 || WWT.timeNum == 0 || WWT.anonymityNum == 0){		// gameover conditions
+						if(WWT.healthNum <= 0 || WWT.energyNum <= 0 || WWT.foodNum <= 0 || WWT.timeNum <= 0 || WWT.anonymityNum <= 0){		// gameover conditions
 								game.time.events.add(Phaser.Timer.SECOND * 2, function() { game.camera.fade(0x000000, 1000) });
 								game.time.events.add(Phaser.Timer.SECOND * 3, function() { game.state.start('Gameover')});
 						}else{
@@ -202,7 +202,7 @@ WWT.Scenario2.prototype = {
 						WWT.timeNum -= 1;
 						WWT.foodNum += 1;
 						//this.anonymity = this.add.sprite(10, 210, 'time-4');
-						if(WWT.healthNum == 0 || WWT.energyNum == 0 || WWT.foodNum == 0 || WWT.timeNum == 0 || WWT.anonymityNum == 0){		// gameover conditions
+						if(WWT.healthNum <= 0 || WWT.energyNum <= 0 || WWT.foodNum <= 0 || WWT.timeNum <= 0 || WWT.anonymityNum <= 0){		// gameover conditions
 								game.time.events.add(Phaser.Timer.SECOND * 2, function() { game.camera.fade(0x000000, 1000) });
 								game.time.events.add(Phaser.Timer.SECOND * 3, function() { game.state.start('Gameover')});
 						}else{
@@ -269,7 +269,7 @@ WWT.Scenario3.prototype = {
 						WWT.energyNum -= 3;
 						WWT.timeNum -= 1;
 						//this.anonymity = this.add.sprite(10, 210, 'anonymity-3');
-						if(WWT.healthNum == 0 || WWT.energyNum == 0 || WWT.foodNum == 0 || WWT.timeNum == 0 || WWT.anonymityNum == 0){		// gameover conditions
+						if(WWT.healthNum <= 0 || WWT.energyNum <= 0 || WWT.foodNum <= 0 || WWT.timeNum <= 0 || WWT.anonymityNum <= 0){		// gameover conditions
 								game.time.events.add(Phaser.Timer.SECOND * 2, function() { game.camera.fade(0x000000, 1000) });
 								game.time.events.add(Phaser.Timer.SECOND * 5, function() { game.state.start('Gameover')});
 
@@ -285,7 +285,7 @@ WWT.Scenario3.prototype = {
 						WWT.Text = this.add.text(270, 10, 'Seriously that river looks dangerous! Of course moving away takes a long time and when you were not looking some ants got into your food!\n-2 to time, -2 to food,', {fontSize: '20px', fill: 'black', wordWrap: true, wordWrapWidth: 700});
 						WWT.timeNum -= 2;
 						WWT.foodNum -= 2;
-						if(WWT.healthNum == 0 || WWT.energyNum == 0 || WWT.foodNum == 0 || WWT.timeNum == 0 || WWT.anonymityNum == 0){		// gameover conditions
+						if(WWT.healthNum <= 0 || WWT.energyNum <= 0 || WWT.foodNum <= 0 || WWT.timeNum <= 0 || WWT.anonymityNum <= 0){		// gameover conditions
 								game.time.events.add(Phaser.Timer.SECOND * 2, function() { game.camera.fade(0x000000, 1000) });
 								game.time.events.add(Phaser.Timer.SECOND * 3, function() { game.state.start('Gameover')});
 						}else{
@@ -301,7 +301,7 @@ WWT.Scenario3.prototype = {
 						WWT.energyNum -= 1;
 						WWT.foodNum -= 2;
 						//this.anonymity = this.add.sprite(10, 210, 'time-4');
-						if(WWT.healthNum == 0 || WWT.energyNum == 0 || WWT.foodNum == 0 || WWT.timeNum == 0 || WWT.anonymityNum == 0){		// gameover conditions
+						if(WWT.healthNum <= 0 || WWT.energyNum <= 0 || WWT.foodNum <= 0 || WWT.timeNum <= 0 || WWT.anonymityNum <= 0){		// gameover conditions
 								game.time.events.add(Phaser.Timer.SECOND * 2, function() { game.camera.fade(0x000000, 1000) });
 								game.time.events.add(Phaser.Timer.SECOND * 3, function() { game.state.start('Gameover')});
 						}else{
@@ -367,7 +367,7 @@ WWT.Scenario4.prototype = {
 						//this.anonymity.destroy();
 						WWT.energyNum -= 3;
 						//this.anonymity = this.add.sprite(10, 210, 'anonymity-3');
-						if(WWT.healthNum == 0 || WWT.energyNum == 0 || WWT.foodNum == 0 || WWT.timeNum == 0 || WWT.anonymityNum == 0){		// gameover conditions
+						if(WWT.healthNum <= 0 || WWT.energyNum <= 0 || WWT.foodNum <= 0 || WWT.timeNum <= 0 || WWT.anonymityNum <= 0){		// gameover conditions
 								game.time.events.add(Phaser.Timer.SECOND * 2, function() { game.camera.fade(0x000000, 1000) });
 								game.time.events.add(Phaser.Timer.SECOND * 5, function() { game.state.start('Gameover')});
 
@@ -384,7 +384,7 @@ WWT.Scenario4.prototype = {
 						WWT.timeNum -= 1;
 						WWT.foodNum += 1;
 						WWT.anonymityNum -= 1;
-						if(WWT.healthNum == 0 || WWT.energyNum == 0 || WWT.foodNum == 0 || WWT.timeNum == 0 || WWT.anonymityNum == 0){		// gameover conditions
+						if(WWT.healthNum <= 0 || WWT.energyNum <= 0 || WWT.foodNum <= 0 || WWT.timeNum <= 0 || WWT.anonymityNum <= 0){		// gameover conditions
 								game.time.events.add(Phaser.Timer.SECOND * 2, function() { game.camera.fade(0x000000, 1000) });
 								game.time.events.add(Phaser.Timer.SECOND * 3, function() { game.state.start('Gameover')});
 						}else{
@@ -400,7 +400,7 @@ WWT.Scenario4.prototype = {
 						//WWT.energyNum -= 1;
 						//WWT.foodNum -= 2;
 						//this.anonymity = this.add.sprite(10, 210, 'time-4');
-						if(WWT.healthNum == 0 || WWT.energyNum == 0 || WWT.foodNum == 0 || WWT.timeNum == 0 || WWT.anonymityNum == 0){		// gameover conditions
+						if(WWT.healthNum <= 0 || WWT.energyNum <= 0 || WWT.foodNum <= 0 || WWT.timeNum <= 0 || WWT.anonymityNum <= 0){		// gameover conditions
 								game.time.events.add(Phaser.Timer.SECOND * 2, function() { game.camera.fade(0x000000, 1000) });
 								game.time.events.add(Phaser.Timer.SECOND * 3, function() { game.state.start('Gameover')});
 						}else{
@@ -469,7 +469,7 @@ WWT.Scenario5.prototype = {
 						WWT.healthNum -= 3;
 						WWT.energyNum -= 1;
 						//this.anonymity = this.add.sprite(10, 210, 'anonymity-3');
-						if(WWT.healthNum == 0 || WWT.energyNum == 0 || WWT.foodNum == 0 || WWT.timeNum == 0 || WWT.anonymityNum == 0){		// gameover conditions
+						if(WWT.healthNum <= 0 || WWT.energyNum <= 0 || WWT.foodNum <= 0 || WWT.timeNum <= 0 || WWT.anonymityNum <= 0){		// gameover conditions
 								game.time.events.add(Phaser.Timer.SECOND * 2, function() { game.camera.fade(0x000000, 1000) });
 								game.time.events.add(Phaser.Timer.SECOND * 5, function() { game.state.start('Gameover')});
 
@@ -485,7 +485,7 @@ WWT.Scenario5.prototype = {
 						WWT.Text = this.add.text(270, 10, 'You make a choice to walk around the minefield, hopefully you will not run out of time... \n-3 to time -1 to food', {fontSize: '20px', fill: 'white', wordWrap: true, wordWrapWidth: 700});
 						WWT.timeNum -= 3;
 						WWT.foodNum -= 1;
-						if(WWT.healthNum == 0 || WWT.energyNum == 0 || WWT.foodNum == 0 || WWT.timeNum == 0 || WWT.anonymityNum == 0){		// gameover conditions
+						if(WWT.healthNum <= 0 || WWT.energyNum <= 0 || WWT.foodNum <= 0 || WWT.timeNum <= 0 || WWT.anonymityNum <= 0){		// gameover conditions
 								game.time.events.add(Phaser.Timer.SECOND * 2, function() { game.camera.fade(0x000000, 1000) });
 								game.time.events.add(Phaser.Timer.SECOND * 3, function() { game.state.start('Gameover')});
 						}else{
@@ -501,7 +501,7 @@ WWT.Scenario5.prototype = {
 						WWT.timeNum -= 1;
 						WWT.energyNum -= 2;
 						//this.anonymity = this.add.sprite(10, 210, 'time-4');
-						if(WWT.healthNum == 0 || WWT.energyNum == 0 || WWT.foodNum == 0 || WWT.timeNum == 0 || WWT.anonymityNum == 0){		// gameover conditions
+						if(WWT.healthNum <= 0 || WWT.energyNum <= 0 || WWT.foodNum <= 0 || WWT.timeNum <= 0 || WWT.anonymityNum <= 0){		// gameover conditions
 								game.time.events.add(Phaser.Timer.SECOND * 2, function() { game.camera.fade(0x000000, 1000) });
 								game.time.events.add(Phaser.Timer.SECOND * 3, function() { game.state.start('Gameover')});
 						}else{
