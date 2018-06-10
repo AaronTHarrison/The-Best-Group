@@ -59,9 +59,14 @@ WWT.Scenario1.prototype = {
 				if(cursors.up.justDown) {
 						feet.play('', 0, 0.25, false);
 						WWT.Text.destroy();
-						WWT.Text = this.add.text(270, 10, 'You were spotted! The scout ran away, probably to call for backup.\n-3 anonymity', {fontSize: '20px', fill: 'black', wordWrap: true, wordWrapWidth: 700});
-						//this.anonymity.destroy();
-						WWT.anonymityNum -= 3;
+						var rand = Math.floor(Math.random()*2);
+						if(rand == 1){
+							WWT.Text = this.add.text(270, 10, 'You were spotted! The scout ran away, probably to call for backup.\n-3 anonymity', {fontSize: '20px', fill: 'black', wordWrap: true, wordWrapWidth: 700});
+							//this.anonymity.destroy();
+							WWT.anonymityNum -= 3;
+					    }else{
+					    	WWT.Text = this.add.text(270, 10, 'You managed to sneak away from the spy undetected, well done!', {fontSize: '20px', fill: 'black', wordWrap: true, wordWrapWidth: 700});
+					    }
 						//this.anonymity = this.add.sprite(10, 210, 'anonymity-3');
 						if(WWT.healthNum <= 0 || WWT.energyNum <= 0 || WWT.foodNum <= 0 || WWT.timeNum <= 0 || WWT.anonymityNum <= 0){		// gameover conditions
 								game.time.events.add(Phaser.Timer.SECOND * 2, function() { game.camera.fade(0x000000, 1000) });
@@ -76,12 +81,20 @@ WWT.Scenario1.prototype = {
 				if(cursors.left.justDown) {
 						feet.play('', 0, 0.25, false);
 						WWT.Text.destroy();
-						WWT.Text = this.add.text(270, 10, 'You are wounded during the fierce firefight, but you manage to kill the Nazi bastard!\n-2 to health, -1 to energy', {fontSize: '20px', fill: 'black', wordWrap: true, wordWrapWidth: 700});
-						//this.anonymity.destroy();
-						WWT.energyNum -= 1;
-						//this.anonymity = this.add.sprite(10, 210, 'anonymity-4');
-						//this.health.destroy();
-						WWT.healthNum -= 2;
+						var rand = Math.floor(Math.random()*2);
+						if(rand == 1){
+							WWT.Text = this.add.text(270, 10, 'You are wounded during the fierce firefight, but you manage to kill the Nazi bastard!\n-2 to health, -1 to energy', {fontSize: '20px', fill: 'black', wordWrap: true, wordWrapWidth: 700});
+							//this.anonymity.destroy();
+							WWT.energyNum -= 1;
+							//this.anonymity = this.add.sprite(10, 210, 'anonymity-4');
+							//this.health.destroy();
+							WWT.healthNum -= 2;
+						}else{
+							WWT.Text = this.add.text(270, 10, 'You are wounded during the fierce firefight, and the nazi bastard escapes! Crap!\n-3 to health, -3 to anonymity, -2 to energy', {fontSize: '20px', fill: 'black', wordWrap: true, wordWrapWidth: 700});
+							WWT.healthNum -= 3;
+							WWT.anonymityNum -= 3;
+							WWT.energyNum -= 2;
+						}
 						//this.health = this.add.sprite(10, 10, 'health-2');
 						if(WWT.healthNum <= 0 || WWT.energyNum <= 0 || WWT.foodNum <= 0 || WWT.timeNum <= 0 || WWT.anonymityNum <= 0){		// gameover conditions
 								game.time.events.add(Phaser.Timer.SECOND * 2, function() { game.camera.fade(0x000000, 1000) });
@@ -94,10 +107,16 @@ WWT.Scenario1.prototype = {
 				if(cursors.right.justDown) {
 						feet.play('', 0, 0.25, false);
 						WWT.Text.destroy();
-						WWT.Text = this.add.text(270, 10, 'After some time the scout eventually leaves.\n-1 time, -1 to food', {fontSize: '20px', fill: 'black', wordWrap: true, wordWrapWidth: 700});
-						//WWT.time.destroy();
-						WWT.timeNum -= 1;
-						WWT.foodNum -= 1;
+						var rand = Math.floor(Math.random()*2);
+						if(rand == 1){
+							WWT.Text = this.add.text(270, 10, 'After some time the scout eventually leaves.\n-1 time, -1 to food', {fontSize: '20px', fill: 'black', wordWrap: true, wordWrapWidth: 700});
+							//WWT.time.destroy();
+							WWT.timeNum -= 1;
+							WWT.foodNum -= 1;
+						}else{
+							WWT.Text = this.add.text(270, 10, 'As you wait the scout spots you and leaves... You need to get a move on now...\n-3 to anonymity', {fontSize: '20px', fill: 'black', wordWrap: true, wordWrapWidth: 700});
+							WWT.anonymityNum -= 3;
+						}
 						//WWT.anonymity = this.add.sprite(10, 210, 'time-4');
 						if(WWT.healthNum <= 0 || WWT.energyNum <= 0 || WWT.foodNum <= 0 || WWT.timeNum <= 0 || WWT.anonymityNum <= 0){		// gameover conditions
 								game.time.events.add(Phaser.Timer.SECOND * 2, function() { game.camera.fade(0x000000, 1000) });
@@ -162,11 +181,19 @@ WWT.Scenario2.prototype = {
 				if(cursors.up.justDown) {
 						feet.play('', 0, 0.25, false);
 						WWT.Text.destroy();
-						WWT.Text = this.add.text(270, 10, 'You get to experience a wonderful sleep on a terrible bed you put together from the natural world, it is as wonderful as you think.\n-1 to energy, -1 to food, -1 to time', {fontSize: '20px', fill: 'white', wordWrap: true, wordWrapWidth: 700});
-						//this.anonymity.destroy();
-						WWT.energyNum -= 1;
-						WWT.foodNum -= 1;
-						WWT.timeNum -= 1;
+						var rand = Math.floor(Math.random() * 2);
+						if(rand == 1){
+							WWT.Text = this.add.text(270, 10, 'You get to experience a wonderful sleep on a terrible bed you put together from the natural world, it is as wonderful as you think.\n-1 to energy, -1 to food, -1 to time', {fontSize: '20px', fill: 'white', wordWrap: true, wordWrapWidth: 700});
+							//this.anonymity.destroy();
+							WWT.energyNum -= 1;
+							WWT.foodNum -= 1;
+							WWT.timeNum -= 1;
+						}else{
+							WWT.Text = this.add.text(270, 10, 'You manage to get some good quality sleep \n-1 to food, -1 to time, +1 to energy', {fontSize: '20px', fill: 'white', wordWrap: true, wordWrapWidth: 700});
+							WWT.foodNum -= 1;
+							WWT.timeNum -= 1;
+							WWT.energyNum += 1;
+						}
 						//this.anonymity = this.add.sprite(10, 210, 'anonymity-3');
 						if(WWT.healthNum <= 0 || WWT.energyNum <= 0 || WWT.foodNum <= 0 || WWT.timeNum <= 0 || WWT.anonymityNum <= 0){		// gameover conditions
 								game.time.events.add(Phaser.Timer.SECOND * 2, function() { game.camera.fade(0x000000, 1000) });
@@ -181,9 +208,19 @@ WWT.Scenario2.prototype = {
 				if(cursors.left.justDown) {
 						feet.play('', 0, 0.25, false);
 						WWT.Text.destroy();
-						WWT.Text = this.add.text(270, 10, 'You light a fire and get some comfort, the smoke will draw people closer. \n-2 to anonymity', {fontSize: '20px', fill: 'white', wordWrap: true, wordWrapWidth: 700});
-						WWT.anonymityNum -= 2;
-						//WWT.foodNum -= 1;
+						var rand = Math.floor(Math.random() * 2);
+						if(rand == 1){
+							WWT.Text = this.add.text(270, 10, 'After struggle you light a fire and get some comfort, of course the smoke will draw people closer. \n-2 to anonymity, -1 to time, -2 to energy', {fontSize: '20px', fill: 'white', wordWrap: true, wordWrapWidth: 700});
+							WWT.anonymityNum -= 2;
+							WWT.timeNum -= 1;
+							WWT.energyNum -= 2;
+							//WWT.foodNum -= 1;
+						}else{
+							WWT.Text = this.add.text(270, 10, 'You light a raging fire!, So raging that it actually burns your hands. \n-2 to anonymity, -2 to health, -1 to time', {fontSize: '20px', fill: 'white', wordWrap: true, wordWrapWidth: 700});	
+							WWT.anonymityNum -= 2;
+							WWT.healthNum -= 2;
+							WWT.timeNum -= 1;
+						}
 						if(WWT.healthNum <= 0 || WWT.energyNum <= 0 || WWT.foodNum <= 0 || WWT.timeNum <= 0 || WWT.anonymityNum <= 0){		// gameover conditions
 								game.time.events.add(Phaser.Timer.SECOND * 2, function() { game.camera.fade(0x000000, 1000) });
 								game.time.events.add(Phaser.Timer.SECOND * 3, function() { game.state.start('Gameover')});
@@ -195,12 +232,20 @@ WWT.Scenario2.prototype = {
 				if(cursors.right.justDown) {
 						feet.play('', 0, 0.25, false);
 						WWT.Text.destroy();
-						WWT.Text = this.add.text(270, 10, 'You muster your energy and manage to hunt and gather some food for the night. \n+1 to health, -2 to energy, +1 to food, -1 to time', {fontSize: '20px', fill: 'white', wordWrap: true, wordWrapWidth: 700});
-						//this.time.destroy();
-						WWT.healthNum += 1;
-						WWT.energyNum -= 2;
-						WWT.timeNum -= 1;
-						WWT.foodNum += 1;
+						var rand = Math.floor(Math.random() * 2);
+						if(rand == 1){
+							WWT.Text = this.add.text(270, 10, 'You muster your energy and manage to hunt and gather some food for the night. \n+1 to health, -2 to energy, +1 to food, -1 to time', {fontSize: '20px', fill: 'white', wordWrap: true, wordWrapWidth: 700});
+							//this.time.destroy();
+							WWT.healthNum += 1;
+							WWT.energyNum -= 2;
+							WWT.timeNum -= 1;
+							WWT.foodNum += 1;
+						}else{
+							WWT.Text = this.add.text(270, 10, 'You unsuccessfully hunt... Now you are hungry\n-1 to time, -2 to energy, -1 to food', {fontSize: '20px', fill: 'white', wordWrap: true, wordWrapWidth: 700});
+							WWT.timeNum -= 1;
+							WWT.energyNum -= 2;
+							WWT.foodNum -= 1;
+						}
 						//this.anonymity = this.add.sprite(10, 210, 'time-4');
 						if(WWT.healthNum <= 0 || WWT.energyNum <= 0 || WWT.foodNum <= 0 || WWT.timeNum <= 0 || WWT.anonymityNum <= 0){		// gameover conditions
 								game.time.events.add(Phaser.Timer.SECOND * 2, function() { game.camera.fade(0x000000, 1000) });
