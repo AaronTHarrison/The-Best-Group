@@ -8,6 +8,10 @@ WWT.Scenario1.prototype = {
 				this.background = this.add.sprite(0, 0, 'scout');
 				this.background.scale.setTo(0.3, 0.3);
 
+				//https://freesound.org/people/FunWithSound/sounds/381381/ is the link to this sound file
+				WWT.music = game.add.audio('wind');
+				WWT.music.play();
+
 				resources = game.add.graphics(0, 0);
 				resources.beginFill(0x0c342a, 1);
 				resources.drawRect(5, 5, 220, 160);
@@ -70,10 +74,14 @@ WWT.Scenario1.prototype = {
 						//this.anonymity = this.add.sprite(10, 210, 'anonymity-3');
 						if(WWT.healthNum <= 0 || WWT.energyNum <= 0 || WWT.foodNum <= 0 || WWT.timeNum <= 0 || WWT.anonymityNum <= 0){		// gameover conditions
 								game.time.events.add(Phaser.Timer.SECOND * 2, function() { game.camera.fade(0x000000, 1000) });
+								WWT.music.destroy();
+								this.cache.removeSound('wind');
 								game.time.events.add(Phaser.Timer.SECOND * 5, function() { game.state.start('Gameover')});
 
 						}else{
 								game.time.events.add(Phaser.Timer.SECOND * 2, function() { game.camera.fade(0x000000, 1000) });
+								WWT.music.destroy();
+								this.cache.removeSound('wind');
 								game.time.events.add(Phaser.Timer.SECOND * 5, function() { game.state.start('Scenario2')});
 
 						}
@@ -98,9 +106,13 @@ WWT.Scenario1.prototype = {
 						//this.health = this.add.sprite(10, 10, 'health-2');
 						if(WWT.healthNum <= 0 || WWT.energyNum <= 0 || WWT.foodNum <= 0 || WWT.timeNum <= 0 || WWT.anonymityNum <= 0){		// gameover conditions
 								game.time.events.add(Phaser.Timer.SECOND * 2, function() { game.camera.fade(0x000000, 1000) });
+								WWT.music.destroy();
+								this.cache.removeSound('wind');
 								game.time.events.add(Phaser.Timer.SECOND * 3, function() { game.state.start('Gameover')});
 						}else{
 								game.time.events.add(Phaser.Timer.SECOND * 2, function() { game.camera.fade(0x000000, 1000) });
+								WWT.music.destroy();
+								this.cache.removeSound('wind');
 								game.time.events.add(Phaser.Timer.SECOND * 3, function() { game.state.start('Scenario2')});
 						}
 				}
@@ -120,9 +132,13 @@ WWT.Scenario1.prototype = {
 						//WWT.anonymity = this.add.sprite(10, 210, 'time-4');
 						if(WWT.healthNum <= 0 || WWT.energyNum <= 0 || WWT.foodNum <= 0 || WWT.timeNum <= 0 || WWT.anonymityNum <= 0){		// gameover conditions
 								game.time.events.add(Phaser.Timer.SECOND * 2, function() { game.camera.fade(0x000000, 1000) });
+								WWT.music.destroy();
+								this.cache.removeSound('wind');
 								game.time.events.add(Phaser.Timer.SECOND * 3, function() { game.state.start('Gameover')});
 						}else{
 								game.time.events.add(Phaser.Timer.SECOND * 2, function() { game.camera.fade(0x000000, 1000) });
+								WWT.music.destroy();
+								this.cache.removeSound('wind');
 								game.time.events.add(Phaser.Timer.SECOND * 3, function() { game.state.start('Scenario2')});
 						}
 				}
@@ -138,6 +154,9 @@ WWT.Scenario2.prototype = {
 				// second scenario in all runs
 				this.background = this.add.sprite(0, 0, 'campsite');
 				this.background.scale.setTo(0.4, 0.32);
+
+				WWT.music = game.add.audio('outside');
+				WWT.music.play();
 
 				// recreate all of the UI text and images
 				resources = game.add.graphics(0, 0);
@@ -197,10 +216,14 @@ WWT.Scenario2.prototype = {
 						//this.anonymity = this.add.sprite(10, 210, 'anonymity-3');
 						if(WWT.healthNum <= 0 || WWT.energyNum <= 0 || WWT.foodNum <= 0 || WWT.timeNum <= 0 || WWT.anonymityNum <= 0){		// gameover conditions
 								game.time.events.add(Phaser.Timer.SECOND * 2, function() { game.camera.fade(0x000000, 1000) });
+								WWT.music.destroy();
+								this.cache.removeSound('outside');
 								game.time.events.add(Phaser.Timer.SECOND * 5, function() { game.state.start('Gameover')});
 
 						}else{
 								game.time.events.add(Phaser.Timer.SECOND * 2, function() { game.camera.fade(0x000000, 1000) });
+								WWT.music.destroy();
+								this.cache.removeSound('outside');
 								game.time.events.add(Phaser.Timer.SECOND * 5, function() { game.state.start('Scenario3')});
 
 						}
@@ -223,9 +246,13 @@ WWT.Scenario2.prototype = {
 						}
 						if(WWT.healthNum <= 0 || WWT.energyNum <= 0 || WWT.foodNum <= 0 || WWT.timeNum <= 0 || WWT.anonymityNum <= 0){		// gameover conditions
 								game.time.events.add(Phaser.Timer.SECOND * 2, function() { game.camera.fade(0x000000, 1000) });
+								WWT.music.destroy();
+								this.cache.removeSound('outside');
 								game.time.events.add(Phaser.Timer.SECOND * 3, function() { game.state.start('Gameover')});
 						}else{
 								game.time.events.add(Phaser.Timer.SECOND * 2, function() { game.camera.fade(0x000000, 1000) });
+								WWT.music.destroy();
+								this.cache.removeSound('outside');
 								game.time.events.add(Phaser.Timer.SECOND * 3, function() { game.state.start('Scenario3')});
 						}
 				}
@@ -249,9 +276,13 @@ WWT.Scenario2.prototype = {
 						//this.anonymity = this.add.sprite(10, 210, 'time-4');
 						if(WWT.healthNum <= 0 || WWT.energyNum <= 0 || WWT.foodNum <= 0 || WWT.timeNum <= 0 || WWT.anonymityNum <= 0){		// gameover conditions
 								game.time.events.add(Phaser.Timer.SECOND * 2, function() { game.camera.fade(0x000000, 1000) });
+								WWT.music.destroy();
+								this.cache.removeSound('outside');
 								game.time.events.add(Phaser.Timer.SECOND * 3, function() { game.state.start('Gameover')});
 						}else{
 								game.time.events.add(Phaser.Timer.SECOND * 2, function() { game.camera.fade(0x000000, 1000) });
+								WWT.music.destroy();
+								this.cache.removeSound('outside');
 								game.time.events.add(Phaser.Timer.SECOND * 3, function() { game.state.start('Scenario3')});
 						}
 				}
@@ -267,6 +298,9 @@ WWT.Scenario3.prototype = {
 				// second scenario in all runs
 				this.background = this.add.sprite(0, 0, 'river');
 				this.background.scale.setTo(0.5, 0.5);
+
+				WWT.music = game.add.audio('lake');
+				WWT.music.play();
 
 				// recreate all of the UI text and images
 				resources = game.add.graphics(0, 0);
@@ -323,10 +357,14 @@ WWT.Scenario3.prototype = {
 						}
 						if(WWT.healthNum <= 0 || WWT.energyNum <= 0 || WWT.foodNum <= 0 || WWT.timeNum <= 0 || WWT.anonymityNum <= 0){		// gameover conditions
 								game.time.events.add(Phaser.Timer.SECOND * 2, function() { game.camera.fade(0x000000, 1000) });
+								WWT.music.destroy();
+								this.cache.removeSound('lake');
 								game.time.events.add(Phaser.Timer.SECOND * 5, function() { game.state.start('Gameover')});
 
 						}else{
 								game.time.events.add(Phaser.Timer.SECOND * 2, function() { game.camera.fade(0x000000, 1000) });
+								WWT.music.destroy();
+								this.cache.removeSound('lake');
 								game.time.events.add(Phaser.Timer.SECOND * 5, function() { game.state.start('Scenario4')});
 
 						}
@@ -346,9 +384,13 @@ WWT.Scenario3.prototype = {
 						}
 						if(WWT.healthNum <= 0 || WWT.energyNum <= 0 || WWT.foodNum <= 0 || WWT.timeNum <= 0 || WWT.anonymityNum <= 0){		// gameover conditions
 								game.time.events.add(Phaser.Timer.SECOND * 2, function() { game.camera.fade(0x000000, 1000) });
+								WWT.music.destroy();
+								this.cache.removeSound('lake');
 								game.time.events.add(Phaser.Timer.SECOND * 3, function() { game.state.start('Gameover')});
 						}else{
 								game.time.events.add(Phaser.Timer.SECOND * 2, function() { game.camera.fade(0x000000, 1000) });
+								WWT.music.destroy();
+								this.cache.removeSound('lake');
 								game.time.events.add(Phaser.Timer.SECOND * 3, function() { game.state.start('Scenario4')});
 						}
 				}
@@ -367,9 +409,13 @@ WWT.Scenario3.prototype = {
 						//this.anonymity = this.add.sprite(10, 210, 'time-4');
 						if(WWT.healthNum <= 0 || WWT.energyNum <= 0 || WWT.foodNum <= 0 || WWT.timeNum <= 0 || WWT.anonymityNum <= 0){		// gameover conditions
 								game.time.events.add(Phaser.Timer.SECOND * 2, function() { game.camera.fade(0x000000, 1000) });
+								WWT.music.destroy();
+								this.cache.removeSound('lake');
 								game.time.events.add(Phaser.Timer.SECOND * 3, function() { game.state.start('Gameover')});
 						}else{
 								game.time.events.add(Phaser.Timer.SECOND * 2, function() { game.camera.fade(0x000000, 1000) });
+								WWT.music.destroy();
+								this.cache.removeSound('lake');
 								game.time.events.add(Phaser.Timer.SECOND * 3, function() { game.state.start('Scenario4')});
 						}
 				}
@@ -385,6 +431,9 @@ WWT.Scenario4.prototype = {
 				// second scenario in all runs
 				this.background = this.add.sprite(0, 0, 'town');
 				this.background.scale.setTo(0.35, 0.4);
+
+				WWT.music = game.add.audio('city');
+				WWT.music.play();
 
 				// recreate all of the UI text and images
 				resources = game.add.graphics(0, 0);
@@ -442,10 +491,14 @@ WWT.Scenario4.prototype = {
 						}
 						if(WWT.healthNum <= 0 || WWT.energyNum <= 0 || WWT.foodNum <= 0 || WWT.timeNum <= 0 || WWT.anonymityNum <= 0){		// gameover conditions
 								game.time.events.add(Phaser.Timer.SECOND * 2, function() { game.camera.fade(0x000000, 1000) });
+								WWT.music.destroy();
+								this.cache.removeSound('city');
 								game.time.events.add(Phaser.Timer.SECOND * 5, function() { game.state.start('Gameover')});
 
 						}else{
 								game.time.events.add(Phaser.Timer.SECOND * 2, function() { game.camera.fade(0x000000, 1000) });
+								WWT.music.destroy();
+								this.cache.removeSound('city');
 								game.time.events.add(Phaser.Timer.SECOND * 5, function() { game.state.start('Scenario5')});
 
 						}
@@ -467,9 +520,13 @@ WWT.Scenario4.prototype = {
 						}
 						if(WWT.healthNum <= 0 || WWT.energyNum <= 0 || WWT.foodNum <= 0 || WWT.timeNum <= 0 || WWT.anonymityNum <= 0){		// gameover conditions
 								game.time.events.add(Phaser.Timer.SECOND * 2, function() { game.camera.fade(0x000000, 1000) });
+								WWT.music.destroy();
+								this.cache.removeSound('city');
 								game.time.events.add(Phaser.Timer.SECOND * 3, function() { game.state.start('Gameover')});
 						}else{
 								game.time.events.add(Phaser.Timer.SECOND * 2, function() { game.camera.fade(0x000000, 1000) });
+								WWT.music.destroy();
+								this.cache.removeSound('city');
 								game.time.events.add(Phaser.Timer.SECOND * 3, function() { game.state.start('Scenario5')});
 						}
 				}
@@ -489,9 +546,13 @@ WWT.Scenario4.prototype = {
 						}
 						if(WWT.healthNum <= 0 || WWT.energyNum <= 0 || WWT.foodNum <= 0 || WWT.timeNum <= 0 || WWT.anonymityNum <= 0){		// gameover conditions
 								game.time.events.add(Phaser.Timer.SECOND * 2, function() { game.camera.fade(0x000000, 1000) });
+								WWT.music.destroy();
+								this.cache.removeSound('city');
 								game.time.events.add(Phaser.Timer.SECOND * 3, function() { game.state.start('Gameover')});
 						}else{
 								game.time.events.add(Phaser.Timer.SECOND * 2, function() { game.camera.fade(0x000000, 1000) });
+								WWT.music.destroy();
+								this.cache.removeSound('city');
 								game.time.events.add(Phaser.Timer.SECOND * 3, function() { game.state.start('Scenario5')});
 						}
 				}
@@ -508,6 +569,9 @@ WWT.Scenario5.prototype = {
 				// second scenario in all runs
 				this.background = this.add.sprite(0, 0, 'minefield');
 				this.background.scale.setTo(1.5, 1.5);
+
+				WWT.music = game.add.audio('mines');
+				WWT.music.play();
 
 				// recreate all of the UI text and images
 				resources = game.add.graphics(0, 0);
@@ -564,10 +628,14 @@ WWT.Scenario5.prototype = {
 						}
 						if(WWT.healthNum <= 0 || WWT.energyNum <= 0 || WWT.foodNum <= 0 || WWT.timeNum <= 0 || WWT.anonymityNum <= 0){		// gameover conditions
 								game.time.events.add(Phaser.Timer.SECOND * 2, function() { game.camera.fade(0x000000, 1000) });
+								WWT.music.destroy();
+								this.cache.removeSound('mines');
 								game.time.events.add(Phaser.Timer.SECOND * 5, function() { game.state.start('Gameover')});
 
 						}else{
 								game.time.events.add(Phaser.Timer.SECOND * 2, function() { game.camera.fade(0x000000, 1000) });
+								WWT.music.destroy();
+								this.cache.removeSound('mines');
 								game.time.events.add(Phaser.Timer.SECOND * 5, function() { game.state.start('YouWin')});
 
 						}
@@ -587,9 +655,13 @@ WWT.Scenario5.prototype = {
 						}	
 						if(WWT.healthNum <= 0 || WWT.energyNum <= 0 || WWT.foodNum <= 0 || WWT.timeNum <= 0 || WWT.anonymityNum <= 0){		// gameover conditions
 								game.time.events.add(Phaser.Timer.SECOND * 2, function() { game.camera.fade(0x000000, 1000) });
+								WWT.music.destroy();
+								this.cache.removeSound('mines');
 								game.time.events.add(Phaser.Timer.SECOND * 3, function() { game.state.start('Gameover')});
 						}else{
 								game.time.events.add(Phaser.Timer.SECOND * 2, function() { game.camera.fade(0x000000, 1000) });
+								WWT.music.destroy();
+								this.cache.removeSound('mines');
 								game.time.events.add(Phaser.Timer.SECOND * 3, function() { game.state.start('YouWin')});
 						}
 				}
@@ -611,9 +683,13 @@ WWT.Scenario5.prototype = {
 						}
 						if(WWT.healthNum <= 0 || WWT.energyNum <= 0 || WWT.foodNum <= 0 || WWT.timeNum <= 0 || WWT.anonymityNum <= 0){		// gameover conditions
 								game.time.events.add(Phaser.Timer.SECOND * 2, function() { game.camera.fade(0x000000, 1000) });
+								WWT.music.destroy();
+								this.cache.removeSound('mines');
 								game.time.events.add(Phaser.Timer.SECOND * 3, function() { game.state.start('Gameover')});
 						}else{
 								game.time.events.add(Phaser.Timer.SECOND * 2, function() { game.camera.fade(0x000000, 1000) });
+								WWT.music.destroy();
+								this.cache.removeSound('mines');
 								game.time.events.add(Phaser.Timer.SECOND * 3, function() { game.state.start('YouWin')});
 						}
 				}

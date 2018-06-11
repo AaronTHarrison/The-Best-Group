@@ -18,6 +18,7 @@ var WWT = {};
 		background: null
 		Text: null
 		UI: null
+		music: null
 
 WWT.Boot = function() {};
 WWT.Boot.prototype = {

@@ -2,7 +2,19 @@ WWT.Preloader = function() {};
 WWT.Preloader.prototype = {
 		preload: function() {			//preload assets
 				console.log('Preloader: preload');
+				//this sound was created by my own footsteps
+				this.load.path = '../WorldWarTrail/';
 				this.load.audio('footsteps', ['assets/audio/footsteps.ogg']);
+				//https://freesound.org/people/FunWithSound/sounds/381381/ is the source of this sound file
+				this.load.audio('wind', ['assets/audio/wind.mp3']);
+				//https://freesound.org/people/qirien/sounds/264578/ is the source
+				this.load.audio('outside', ['assets/audio/outside.mp3']);
+				//https://freesound.org/people/sithjawa/sounds/86624/ is the source of the lake sound
+				this.load.audio('lake', ['assets/audio/lake.mp3']);
+				//https://freesound.org/people/nebulousflynn/sounds/316734/
+				this.load.audio('city', ['assets/audio/city.mp3']);
+				//https://freesound.org/people/HerbertBoland/sounds/142025/
+				this.load.audio('mines', ['assets/audio/mines.mp3']);
 				this.load.path = '../WorldWarTrail/assets/img/';
 				this.load.image('scout', 'Scout.png');
 				this.load.image('river', 'River.png');
