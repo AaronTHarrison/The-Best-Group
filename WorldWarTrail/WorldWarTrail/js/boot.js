@@ -1,3 +1,5 @@
+//establishes WWT Global variable (Class)
+// Establishes contents of WWT
 var WWT = {};
 		healthText: null
 		healthNum: null
@@ -20,11 +22,13 @@ var WWT = {};
 		UI: null
 		music: null
 
+//Initiate Boot Function
 WWT.Boot = function() {};
 WWT.Boot.prototype = {
 		init: function() {
 				console.log('Boot: init');
 		},
+		// Create Title Screen
 		preload: function() {
 				console.log('Boot: preload');
 				var text1 = this.add.text(0, 0, 'World War Trail\n', {fontSize: '50px', fill: 'black'});
@@ -32,9 +36,11 @@ WWT.Boot.prototype = {
 				text1.setTextBounds(0,200,1000,100);
 				text2.setTextBounds(0,250,1000,100);
 		},
+		// Background Color
 		create: function() {
 				this.stage.backgroundColor = '#859994';
 		},
+		//start Instructions.js
 		update: function() {
 				if(this.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR)){
 						this.state.start('Instructions');

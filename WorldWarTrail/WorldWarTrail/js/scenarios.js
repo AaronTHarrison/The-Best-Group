@@ -1,3 +1,4 @@
+// Scenario 1: The Scout
 WWT.Scenario1 = function() {};
 WWT.Scenario1.prototype = {
 		preload: function(){
@@ -8,6 +9,7 @@ WWT.Scenario1.prototype = {
 				this.background = this.add.sprite(0, 0, 'scout');
 				this.background.scale.setTo(0.3, 0.3);
 
+				//background music
 				//https://freesound.org/people/FunWithSound/sounds/381381/ is the link to this sound file
 				WWT.music = game.add.audio('wind');
 				WWT.music.play();
@@ -31,11 +33,6 @@ WWT.Scenario1.prototype = {
 				WWT.anonymityText = this.add.text(10, 100, 'Anonymity: ' + WWT.anonymityNum + "/5", {fontsize: '12px', fill: 'white'});
 				WWT.timeText = this.add.text(10, 130, 'Time: ' + WWT.timeNum + "/5", {fontsize: '12px', fill: 'white'});
 
-				//this.energy = this.add.sprite(10, 60, 'energy-5');
-				//this.food = this.add.sprite(10, 110, 'food-5');
-				//this.time = this.add.sprite(10, 160, 'time-5');
-				//this.anonymity = this.add.sprite(10, 210, 'anonymity-5');
-
 				// create arrows
 				WWT.arrowUp = this.add.sprite(470, 450, 'arrowUp');
 				WWT.arrowLeft = this.add.sprite(370, 500, 'arrowLeft');
@@ -49,8 +46,9 @@ WWT.Scenario1.prototype = {
 				WWT.rightText = this.add.text(0, 0, 'Stand still and wait for him to pass', {fontSize: '10px', fill: 'black'});
 				WWT.rightText.setTextBounds(580, 470, 50, 10);
 		},
-		update: function(){		// create cursor objects, update text, check for key input, adjust variable values accordingly, go to next state
-			    //console.log(WWT.healthNum);
+		update: function(){		
+		// create cursor objects, update text, check for key input, adjust variable values accordingly, go to next state
+			    
 				var cursors = this.input.keyboard.createCursorKeys();
 				var feet = this.add.audio('footsteps');
 
@@ -60,18 +58,20 @@ WWT.Scenario1.prototype = {
 				WWT.foodText.text = 'Food: ' + WWT.foodNum + '/5';
 				WWT.anonymityText.text = 'Anonymity: ' + WWT.anonymityNum + '/5';
 				WWT.timeText.text = 'Time: ' + WWT.timeNum + '/5';
+				// choosing up
 				if(cursors.up.justDown) {
 						feet.play('', 0, 0.25, false);
 						WWT.Text.destroy();
+
+						//Scenario Response text
 						var rand = Math.floor(Math.random()*2);
 						if(rand == 1){
 							WWT.Text = this.add.text(270, 10, 'You were spotted! The scout ran away, probably to call for backup.\n-3 anonymity', {fontSize: '20px', fill: 'black', wordWrap: true, wordWrapWidth: 700});
-							//this.anonymity.destroy();
 							WWT.anonymityNum -= 3;
 					    }else{
 					    	WWT.Text = this.add.text(270, 10, 'You managed to sneak away from the spy undetected, well done!', {fontSize: '20px', fill: 'black', wordWrap: true, wordWrapWidth: 700});
 					    }
-						//this.anonymity = this.add.sprite(10, 210, 'anonymity-3');
+
 						if(WWT.healthNum <= 0 || WWT.energyNum <= 0 || WWT.foodNum <= 0 || WWT.timeNum <= 0 || WWT.anonymityNum <= 0){		// gameover conditions
 								game.time.events.add(Phaser.Timer.SECOND * 2, function() { game.camera.fade(0x000000, 1000) });
 								WWT.music.destroy();
@@ -86,16 +86,14 @@ WWT.Scenario1.prototype = {
 
 						}
 				}
+				// choosing Left
 				if(cursors.left.justDown) {
 						feet.play('', 0, 0.25, false);
 						WWT.Text.destroy();
 						var rand = Math.floor(Math.random()*2);
 						if(rand == 1){
 							WWT.Text = this.add.text(270, 10, 'You are wounded during the fierce firefight, but you manage to kill the Nazi bastard!\n-2 to health, -1 to energy', {fontSize: '20px', fill: 'black', wordWrap: true, wordWrapWidth: 700});
-							//this.anonymity.destroy();
 							WWT.energyNum -= 1;
-							//this.anonymity = this.add.sprite(10, 210, 'anonymity-4');
-							//this.health.destroy();
 							WWT.healthNum -= 2;
 						}else{
 							WWT.Text = this.add.text(270, 10, 'You are wounded during the fierce firefight, and the nazi bastard escapes! Crap!\n-3 to health, -3 to anonymity, -2 to energy', {fontSize: '20px', fill: 'black', wordWrap: true, wordWrapWidth: 700});
@@ -103,7 +101,7 @@ WWT.Scenario1.prototype = {
 							WWT.anonymityNum -= 3;
 							WWT.energyNum -= 2;
 						}
-						//this.health = this.add.sprite(10, 10, 'health-2');
+
 						if(WWT.healthNum <= 0 || WWT.energyNum <= 0 || WWT.foodNum <= 0 || WWT.timeNum <= 0 || WWT.anonymityNum <= 0){		// gameover conditions
 								game.time.events.add(Phaser.Timer.SECOND * 2, function() { game.camera.fade(0x000000, 1000) });
 								WWT.music.destroy();
@@ -116,20 +114,20 @@ WWT.Scenario1.prototype = {
 								game.time.events.add(Phaser.Timer.SECOND * 3, function() { game.state.start('Scenario2')});
 						}
 				}
+				// choosing left
 				if(cursors.right.justDown) {
 						feet.play('', 0, 0.25, false);
 						WWT.Text.destroy();
 						var rand = Math.floor(Math.random()*2);
 						if(rand == 1){
 							WWT.Text = this.add.text(270, 10, 'After some time the scout eventually leaves.\n-1 time, -1 to food', {fontSize: '20px', fill: 'black', wordWrap: true, wordWrapWidth: 700});
-							//WWT.time.destroy();
 							WWT.timeNum -= 1;
 							WWT.foodNum -= 1;
 						}else{
 							WWT.Text = this.add.text(270, 10, 'As you wait the scout spots you and leaves... You need to get a move on now...\n-3 to anonymity', {fontSize: '20px', fill: 'black', wordWrap: true, wordWrapWidth: 700});
 							WWT.anonymityNum -= 3;
 						}
-						//WWT.anonymity = this.add.sprite(10, 210, 'time-4');
+
 						if(WWT.healthNum <= 0 || WWT.energyNum <= 0 || WWT.foodNum <= 0 || WWT.timeNum <= 0 || WWT.anonymityNum <= 0){		// gameover conditions
 								game.time.events.add(Phaser.Timer.SECOND * 2, function() { game.camera.fade(0x000000, 1000) });
 								WWT.music.destroy();
@@ -145,6 +143,7 @@ WWT.Scenario1.prototype = {
 		}
 };
 
+// Scenario 2: The Camp
 WWT.Scenario2 = function() {};
 WWT.Scenario2.prototype = {
 		preload: function(){
@@ -155,6 +154,7 @@ WWT.Scenario2.prototype = {
 				this.background = this.add.sprite(0, 0, 'campsite');
 				this.background.scale.setTo(0.4, 0.32);
 
+				// background music
 				WWT.music = game.add.audio('outside');
 				WWT.music.play();
 
@@ -170,9 +170,6 @@ WWT.Scenario2.prototype = {
 				WWT.anonymityText = this.add.text(10, 100, 'Anonymity: ' + WWT.anonymityNum + "/5", {fontsize: '12px', fill: 'white'});
 				WWT.timeText = this.add.text(10, 130, 'Time: ' + WWT.timeNum + "/5", {fontsize: '12px', fill: 'white'});
 
-				//if(this.health.parent){
-			    //		this.add.existing(this.health);
-			    //}
 			    //create arrow keys
 			    WWT.arrowUp = this.add.sprite(470, 450, 'arrowUp');
 				WWT.arrowLeft = this.add.sprite(370, 500, 'arrowLeft');
@@ -197,13 +194,13 @@ WWT.Scenario2.prototype = {
 				WWT.anonymityText.text = 'Anonymity: ' + WWT.anonymityNum + '/5';
 				WWT.timeText.text = 'Time: ' + WWT.timeNum + '/5';
 
+				// choosing up
 				if(cursors.up.justDown) {
 						feet.play('', 0, 0.25, false);
 						WWT.Text.destroy();
 						var rand = Math.floor(Math.random() * 2);
 						if(rand == 1){
 							WWT.Text = this.add.text(270, 10, 'You get to experience a wonderful sleep on a terrible bed you put together from the natural world, it is as wonderful as you think.\n-1 to energy, -1 to food, -1 to time', {fontSize: '20px', fill: 'white', wordWrap: true, wordWrapWidth: 700});
-							//this.anonymity.destroy();
 							WWT.energyNum -= 1;
 							WWT.foodNum -= 1;
 							WWT.timeNum -= 1;
@@ -213,7 +210,6 @@ WWT.Scenario2.prototype = {
 							WWT.timeNum -= 1;
 							WWT.energyNum += 1;
 						}
-						//this.anonymity = this.add.sprite(10, 210, 'anonymity-3');
 						if(WWT.healthNum <= 0 || WWT.energyNum <= 0 || WWT.foodNum <= 0 || WWT.timeNum <= 0 || WWT.anonymityNum <= 0){		// gameover conditions
 								game.time.events.add(Phaser.Timer.SECOND * 2, function() { game.camera.fade(0x000000, 1000) });
 								WWT.music.destroy();
@@ -228,6 +224,7 @@ WWT.Scenario2.prototype = {
 
 						}
 				}
+				// choosing left
 				if(cursors.left.justDown) {
 						feet.play('', 0, 0.25, false);
 						WWT.Text.destroy();
@@ -237,7 +234,6 @@ WWT.Scenario2.prototype = {
 							WWT.anonymityNum -= 2;
 							WWT.timeNum -= 1;
 							WWT.energyNum -= 2;
-							//WWT.foodNum -= 1;
 						}else{
 							WWT.Text = this.add.text(270, 10, 'You light a raging fire!, So raging that it actually burns your hands. \n-2 to anonymity, -2 to health, -1 to time', {fontSize: '20px', fill: 'white', wordWrap: true, wordWrapWidth: 700});	
 							WWT.anonymityNum -= 2;
@@ -256,13 +252,13 @@ WWT.Scenario2.prototype = {
 								game.time.events.add(Phaser.Timer.SECOND * 3, function() { game.state.start('Scenario3')});
 						}
 				}
+				// choosing right
 				if(cursors.right.justDown) {
 						feet.play('', 0, 0.25, false);
 						WWT.Text.destroy();
 						var rand = Math.floor(Math.random() * 2);
 						if(rand == 1){
 							WWT.Text = this.add.text(270, 10, 'You muster your energy and manage to hunt and gather some food for the night. \n+1 to health, -2 to energy, +1 to food, -1 to time', {fontSize: '20px', fill: 'white', wordWrap: true, wordWrapWidth: 700});
-							//this.time.destroy();
 							WWT.healthNum += 1;
 							WWT.energyNum -= 2;
 							WWT.timeNum -= 1;
@@ -273,7 +269,6 @@ WWT.Scenario2.prototype = {
 							WWT.energyNum -= 2;
 							WWT.foodNum -= 1;
 						}
-						//this.anonymity = this.add.sprite(10, 210, 'time-4');
 						if(WWT.healthNum <= 0 || WWT.energyNum <= 0 || WWT.foodNum <= 0 || WWT.timeNum <= 0 || WWT.anonymityNum <= 0){		// gameover conditions
 								game.time.events.add(Phaser.Timer.SECOND * 2, function() { game.camera.fade(0x000000, 1000) });
 								WWT.music.destroy();
@@ -289,6 +284,7 @@ WWT.Scenario2.prototype = {
 		}
 };
 
+// Scenario 3: River
 WWT.Scenario3 = function() {};
 WWT.Scenario3.prototype = {
 		preload: function(){
@@ -299,6 +295,7 @@ WWT.Scenario3.prototype = {
 				this.background = this.add.sprite(0, 0, 'river');
 				this.background.scale.setTo(0.5, 0.5);
 
+				// background music
 				WWT.music = game.add.audio('lake');
 				WWT.music.play();
 
@@ -313,14 +310,11 @@ WWT.Scenario3.prototype = {
 				WWT.foodText = this.add.text(10, 70, 'Food: ' + WWT.foodNum + "/5", {fontsize: '12px', fill: 'white'});
 				WWT.anonymityText = this.add.text(10, 100, 'Anonymity: ' + WWT.anonymityNum + "/5", {fontsize: '12px', fill: 'white'});
 				WWT.timeText = this.add.text(10, 130, 'Time: ' + WWT.timeNum + "/5", {fontsize: '12px', fill: 'white'});
-
-				//if(this.health.parent){
-			    //		this.add.existing(this.health);
-			    //}
 			    WWT.arrowUp = this.add.sprite(470, 450, 'arrowUp');
 				WWT.arrowLeft = this.add.sprite(370, 500, 'arrowLeft');
 				WWT.arrowRight = this.add.sprite(570, 500, 'arrowRight');
 
+				// Scenario Text
 				WWT.Text = this.add.text(270, 10, 'You come across a great river, the water looking particularly dangerous, to the side you can spot a old broken looking boat\nwhat do you do?', {fontSize: '20px', fill: 'white', wordWrap: true, wordWrapWidth: 700});
 				this.upText = this.add.text(0, 0, 'I got this, lets swim!', {fontSize: '10px', fill: 'black'});
 				this.upText.setTextBounds(440, 430, 50, 10);
@@ -340,16 +334,15 @@ WWT.Scenario3.prototype = {
 				WWT.anonymityText.text = 'Anonymity: ' + WWT.anonymityNum + '/5';
 				WWT.timeText.text = 'Time: ' + WWT.timeNum + '/5';
 
+				// choosing up
 				if(cursors.up.justDown) {
 						feet.play('', 0, 0.25, false);
 						WWT.Text.destroy();
 						var rand = Math.floor(Math.random() * 2);
 						if(rand == 1){
 							WWT.Text = this.add.text(270, 10, 'You swim through the water and barely make it to the opposite shore, that was exhausitng and took a while!\n-3 to energy, -1 to time', {fontSize: '20px', fill: 'black', wordWrap: true, wordWrapWidth: 700});
-							//this.anonymity.destroy();
 							WWT.energyNum -= 3;
 							WWT.timeNum -= 1;
-							//this.anonymity = this.add.sprite(10, 210, 'anonymity-3');
 						}else{
 							WWT.Text = this.add.text(270, 10, 'Somehow swimming through the river has spontaneously given you dysentery', {fontSize: '20px', fill: 'black', wordWrap: true, wordWrapWidth: 700});
 							WWT.healthNum -= 10;
@@ -369,6 +362,7 @@ WWT.Scenario3.prototype = {
 
 						}
 				}
+				// choosing left
 				if(cursors.left.justDown) {
 						feet.play('', 0, 0.25, false);
 						WWT.Text.destroy();
@@ -394,19 +388,18 @@ WWT.Scenario3.prototype = {
 								game.time.events.add(Phaser.Timer.SECOND * 3, function() { game.state.start('Scenario4')});
 						}
 				}
+				// choosing right
 				if(cursors.right.justDown) {
 						feet.play('', 0, 0.25, false);
 						WWT.Text.destroy();
 						var rand = Math.floor(Math.random() * 2);
 						if(rand == 1){
 							WWT.Text = this.add.text(270, 10, 'You climb into the boat and set off, halfway through the boat breaks forcing you to scamper to the shore! In your rush you left some of your rations in the boat \n-1 to energy, -2 to food', {fontSize: '20px', fill: 'black', wordWrap: true, wordWrapWidth: 700});
-							//this.time.destroy();
 							WWT.energyNum -= 1;
 							WWT.foodNum -= 2;
 						}else{
 							WWT.Text = this.add.text(270, 10, 'You climb into the boat and make it to the opposite shore, well done!', {fontSize: '20px', fill: 'black', wordWrap: true, wordWrapWidth: 700});
 						}
-						//this.anonymity = this.add.sprite(10, 210, 'time-4');
 						if(WWT.healthNum <= 0 || WWT.energyNum <= 0 || WWT.foodNum <= 0 || WWT.timeNum <= 0 || WWT.anonymityNum <= 0){		// gameover conditions
 								game.time.events.add(Phaser.Timer.SECOND * 2, function() { game.camera.fade(0x000000, 1000) });
 								WWT.music.destroy();
@@ -422,6 +415,7 @@ WWT.Scenario3.prototype = {
 		}
 };
 
+// Scenario 4: Town Center
 WWT.Scenario4 = function() {};
 WWT.Scenario4.prototype = {
 		preload: function(){
@@ -432,6 +426,7 @@ WWT.Scenario4.prototype = {
 				this.background = this.add.sprite(0, 0, 'town');
 				this.background.scale.setTo(0.35, 0.4);
 
+				// background music
 				WWT.music = game.add.audio('city');
 				WWT.music.play();
 
@@ -446,10 +441,6 @@ WWT.Scenario4.prototype = {
 				WWT.foodText = this.add.text(10, 70, 'Food: ' + WWT.foodNum + "/5", {fontsize: '12px', fill: 'white'});
 				WWT.anonymityText = this.add.text(10, 100, 'Anonymity: ' + WWT.anonymityNum + "/5", {fontsize: '12px', fill: 'white'});
 				WWT.timeText = this.add.text(10, 130, 'Time: ' + WWT.timeNum + "/5", {fontsize: '12px', fill: 'white'});
-
-				//if(this.health.parent){
-			    //		this.add.existing(this.health);
-			    //}
 			    WWT.arrowUp = this.add.sprite(470, 450, 'arrowUp');
 				WWT.arrowLeft = this.add.sprite(370, 500, 'arrowLeft');
 				WWT.arrowRight = this.add.sprite(570, 500, 'arrowRight');
@@ -473,16 +464,15 @@ WWT.Scenario4.prototype = {
 				WWT.anonymityText.text = 'Anonymity: ' + WWT.anonymityNum + '/5';
 				WWT.timeText.text = 'Time: ' + WWT.timeNum + '/5';
 
+				// choosing up
 				if(cursors.up.justDown) {
 						feet.play('', 0, 0.25, false);
 						WWT.Text.destroy();
 						var rand = Math.floor(Math.random() * 2);
 						if(rand == 1){
 							WWT.Text = this.add.text(270, 10, 'Trying to draw as little attention to yourself as possible you travel through town and leave before dark, looks like it is going to be another dark and cold night...\n                  -2 to food, -2 to energy', {fontSize: '20px', fill: 'red', wordWrap: true, wordWrapWidth: 700});
-							//this.anonymity.destroy();
 							WWT.energyNum -= 2;
 							WWT.foodNum -= 2;
-							//this.anonymity = this.add.sprite(10, 210, 'anonymity-3');
 						}else{
 							WWT.Text = this.add.text(270, 10, 'As you pass through town someone spots you and reports you to the police. After a chase scene you manage to escape. \n                            -2 to energy, -1 to health, -1 to food', {fontSize: '20px', fill: 'red', wordWrap: true, wordWrapWidth: 700});
 							WWT.energyNum -= 2;
@@ -503,6 +493,7 @@ WWT.Scenario4.prototype = {
 
 						}
 				}
+				// choosing left
 				if(cursors.left.justDown) {
 						feet.play('', 0, 0.25, false);
 						WWT.Text.destroy();
@@ -530,16 +521,13 @@ WWT.Scenario4.prototype = {
 								game.time.events.add(Phaser.Timer.SECOND * 3, function() { game.state.start('Scenario5')});
 						}
 				}
+				// choosing right
 				if(cursors.right.justDown) {
 						feet.play('', 0, 0.25, false);
 						WWT.Text.destroy();
 						var rand = Math.floor(Math.random() * 2);
 						if(rand == 1){
-							WWT.Text = this.add.text(270, 10, 'you eavesdrop and find out about the secret mission that is not in the game yet', {fontSize: '20px', fill: 'red', wordWrap: true, wordWrapWidth: 700});
-							//this.time.destroy();
-							//WWT.energyNum -= 1;
-							//WWT.foodNum -= 2;
-							//this.anonymity = this.add.sprite(10, 210, 'time-4');
+							WWT.Text = this.add.text(270, 10, 'you eavesdrop and find out about the small scale assault happening tonight. You better hurry.', {fontSize: '20px', fill: 'red', wordWrap: true, wordWrapWidth: 700});
 						}else{
 							WWT.Text = this.add.text(270, 10, 'As you eavesdrop someone notices and gets the police on you, better run!\n               -2 to energy', {fontSize: '20px', fill: 'red', wordWrap: true, wordWrapWidth: 700});
 							WWT.energyNum -= 2;
@@ -560,6 +548,7 @@ WWT.Scenario4.prototype = {
 		}
 };
 
+// Scenario 5: Minefield
 WWT.Scenario5 = function() {};
 WWT.Scenario5.prototype = {
 		preload: function(){
@@ -570,6 +559,7 @@ WWT.Scenario5.prototype = {
 				this.background = this.add.sprite(0, 0, 'minefield');
 				this.background.scale.setTo(1.5, 1.5);
 
+				// background music
 				WWT.music = game.add.audio('mines');
 				WWT.music.play();
 
@@ -585,9 +575,6 @@ WWT.Scenario5.prototype = {
 				WWT.anonymityText = this.add.text(10, 100, 'Anonymity: ' + WWT.anonymityNum + "/5", {fontsize: '12px', fill: 'white'});
 				WWT.timeText = this.add.text(10, 130, 'Time: ' + WWT.timeNum + "/5", {fontsize: '12px', fill: 'white'});
 
-				//if(this.health.parent){
-			    //		this.add.existing(this.health);
-			    //}
 			    //create arrow keys
 			    WWT.arrowUp = this.add.sprite(470, 450, 'arrowUp');
 				WWT.arrowLeft = this.add.sprite(370, 500, 'arrowLeft');
@@ -612,16 +599,15 @@ WWT.Scenario5.prototype = {
 				WWT.anonymityText.text = 'Anonymity: ' + WWT.anonymityNum + '/5';
 				WWT.timeText.text = 'Time: ' + WWT.timeNum + '/5';
 
+				// choosing up
 				if(cursors.up.justDown) {
 						feet.play('', 0, 0.25, false);
 						WWT.Text.destroy();
 						var rand = Math.floor(Math.random() * 2);
 						if(rand = 1){
 							WWT.Text = this.add.text(270, 10, 'As you franticly run through the minefield, predictably you set off a chain explosion of mines.\n-3 health, -1 to energy', {fontSize: '20px', fill: 'white', wordWrap: true, wordWrapWidth: 700});
-							//this.anonymity.destroy();
 							WWT.healthNum -= 3;
 							WWT.energyNum -= 1;
-							//this.anonymity = this.add.sprite(10, 210, 'anonymity-3');
 						}else{
 							WWT.Text = this.add.text(270, 10, 'As you franticly run through the minefield a bomb sets off right in front of you', {fontSize: '20px', fill: 'white', wordWrap: true, wordWrapWidth: 700});
 							WWT.healthNum -= 10;
@@ -640,6 +626,7 @@ WWT.Scenario5.prototype = {
 
 						}
 				}
+				// choosing left
 				if(cursors.left.justDown) {
 						feet.play('', 0, 0.25, false);
 						WWT.Text.destroy();
@@ -665,16 +652,15 @@ WWT.Scenario5.prototype = {
 								game.time.events.add(Phaser.Timer.SECOND * 3, function() { game.state.start('YouWin')});
 						}
 				}
+				// choosing right
 				if(cursors.right.justDown) {
 						feet.play('', 0, 0.25, false);
 						WWT.Text.destroy();
 						var rand = Math.floor(Math.random() * 2);
 						if(rand = 1){
 							WWT.Text = this.add.text(270, 10, 'You carefully navigate your way through the maze of mines while gunfire races around you. The mental preasure is intense and a single lapse of judgement will end in certain death...\n-1 to time, -2 to energy', {fontSize: '20px', fill: 'white', wordWrap: true, wordWrapWidth: 700});
-							//this.time.destroy();
 							WWT.timeNum -= 1;
 							WWT.energyNum -= 2;
-							//this.anonymity = this.add.sprite(10, 210, 'time-4');
 						}else{
 							WWT.Text = this.add.text(270, 10, 'Either through lapse of judgement or misfortune a mine goes off right next to you \n-2 to health, -1 to time, -1 to energy', {fontSize: '20px', fill: 'black', wordWrap: true, wordWrapWidth: 700});
 							WWT.healthNum -= 2;
